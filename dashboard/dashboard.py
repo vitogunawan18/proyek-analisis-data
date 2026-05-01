@@ -9,7 +9,9 @@ st.set_page_config(page_title="E-Commerce Dashboard", page_icon="🛒", layout="
 # Load data
 @st.cache_data
 def load_data():
-    df = pd.read_csv("main_data.csv")
+    base_dir = os.path.dirname(__file__)
+    file_path = os.path.join(base_dir, "main_data.csv")
+    df = pd.read_csv(file_path)
     df['order_purchase_timestamp'] = pd.to_datetime(df['order_purchase_timestamp'])
     return df
 
