@@ -1,0 +1,3 @@
+# Isi dengan URL Streamlit Cloud/Streamlit Community Anda jika sudah di-deploy.
+# Jika belum di-deploy (hanya jalan di local), biarkan file ini kosong atau tulis "Local Deployment".
+Local Deployment
