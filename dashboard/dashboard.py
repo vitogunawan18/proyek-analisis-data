@@ -45,23 +45,41 @@ st.title("🛒 E-Commerce Public Dataset Dashboard")
 st.markdown("Dashboard ini menampilkan hasil analisis data E-Commerce Public Dataset dengan visualisasi interaktif.")
 
 # --- Question 1: Best & Worst Products ---
-st.subheader("Kategori Produk Terbaik dan Terburuk berdasarkan Jumlah Pesanan")
+st.subheader("Kategori Produk Terbaik dan Terburuk berdasarkan Jumlah Pesanan (Sep 2016 - Okt 2018)")
 
 sum_order_items_df = main_df.groupby("product_category_name_english").order_id.nunique().reset_index().rename(columns={"order_id": "order_count"}).sort_values(by="order_count", ascending=False)
 
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(24, 10))
 
 # Best (Blues_r)
-sns.barplot(x="order_count", y="product_category_name_english", data=sum_order_items_df.head(10), palette="Blues_r", ax=ax[0])
+# Ambil 10 kategori teratas
+top_10 = sum_order_items_df.head(10)
+
+sns.barplot(
+    x="order_count",
+    y="product_category_name_english",
+    data=top_10,
+    palette="Blues_r",
+    ax=ax[0]
+)
 ax[0].set_ylabel(None)
 ax[0].set_xlabel("Number of Orders", fontsize=15)
 ax[0].set_title("Top 10 Best Performing Products", loc="center", fontsize=18, fontweight='bold', pad=20)
-ax[0].tick_params(axis ='y', labelsize=12)
+ax[0].tick_params(axis='y', labelsize=12)
 ax[0].spines['top'].set_visible(False)
 ax[0].spines['right'].set_visible(False)
 
 # Worst (Reds)
-sns.barplot(x="order_count", y="product_category_name_english", data=sum_order_items_df.sort_values(by="order_count", ascending=True).head(10), palette="Reds", ax=ax[1])
+# Ambil 10 kategori terbawah
+bottom_10 = sum_order_items_df.sort_values(by="order_count", ascending=True).head(10)
+
+sns.barplot(
+    x="order_count",
+    y="product_category_name_english",
+    data=bottom_10,
+    palette="Reds",
+    ax=ax[1]
+)
 ax[1].set_ylabel(None)
 ax[1].set_xlabel("Number of Orders", fontsize=15)
 ax[1].invert_xaxis()
