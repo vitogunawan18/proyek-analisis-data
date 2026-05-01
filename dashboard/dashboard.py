@@ -13,16 +13,12 @@ st.set_page_config(page_title="E-Commerce Dashboard", page_icon="🛒", layout="
 def load_data():
     base_dir = os.path.dirname(__file__)
     main_path = os.path.join(base_dir, "main_data.csv")
-    cust_path = os.path.join(base_dir, "customers_dataset.csv")
     
     df = pd.read_csv(main_path)
     df['order_purchase_timestamp'] = pd.to_datetime(df['order_purchase_timestamp'])
-    
-    # Load customers for RFM
-    cust_df = pd.read_csv(cust_path)
-    return df, cust_df
+    return df
 
-all_df, customers_df = load_data()
+all_df = load_data()
 
 st.title("🛒 E-Commerce Public Dataset Dashboard")
 st.markdown("Dashboard ini menampilkan hasil analisis data E-Commerce Public Dataset dengan visualisasi interaktif.")
@@ -96,7 +92,6 @@ else:
 st.subheader("Best Customers Based on RFM Parameters")
 
 rfm_df = main_df[main_df['order_status'] == 'delivered'].copy()
-rfm_df = pd.merge(rfm_df, customers_df, on="customer_id")
 recent_date = all_df['order_purchase_timestamp'].max()
 
 rfm = rfm_df.groupby('customer_unique_id').agg({
