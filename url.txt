@@ -1,1 +1,2 @@
 https://s2squaq9blx48xpxssjr7r.streamlit.app/
+https://github.com/vitogunawan18/proyek-analisis-data.git
