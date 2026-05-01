@@ -56,7 +56,6 @@ Aplikasi akan secara otomatis terbuka di browser Anda pada alamat `http://localh
 
 ## 🌐 Live Dashboard
 Dashboard ini juga telah di-deploy ke **Streamlit Community Cloud**. Anda dapat mengaksesnya secara langsung melalui tautan berikut:
-👉 [**E-Commerce Dashboard**](#) *(Silakan ganti tanda # dengan URL deploy Anda dari url.txt)*
-
+https://s2squaq9blx48xpxssjr7r.streamlit.app/
 ---
 **Dibuat oleh:** Vito Gunawan 
